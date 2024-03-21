@@ -1,0 +1,15 @@
+node_modules
+coverage
+.next
+*.hbs
+pipeline.yml
+Dockerfile
+nginx.conf.template
+antd.variable.css
+packages/css/vars.scss
+*.yaml
+*.patch
+.prettierignore
+*.bash
+typedocs
+*api.md
