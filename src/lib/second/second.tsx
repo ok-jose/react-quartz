@@ -1,12 +1,7 @@
 import { Radio } from 'antd'
 import { Type, Mode } from '@sbzen/cron-core'
-import { useService } from '../utils/hooks/api-context/api-context.ts'
+import { useService, SECOND_OPTIONS } from '../utils'
 import { AndComponent, Increment, RangeComponent } from '../share'
-
-const selectOptions = Array.from({ length: 60 }, (_, i) => i + 1).map((i) => {
-  const str = i.toString()
-  return { label: str, value: str }
-})
 
 const Second = () => {
   const secondApi = useService().getApi(Type.SECONDS)
@@ -27,10 +22,10 @@ const Second = () => {
         />
         <Increment
           disabled={secondApi.isIncrementControlsDisabled()}
-          primaryOptions={selectOptions}
+          primaryOptions={SECOND_OPTIONS}
           primaryValue={secondApi.getIncrementPrimaryValue()}
           onPrimaryValueChange={secondApi.setIncrementPrimaryValue}
-          secondaryOptions={selectOptions}
+          secondaryOptions={SECOND_OPTIONS}
           secondaryValue={secondApi.getIncrementSecondaryValue()}
           onSecondaryValueChange={secondApi.setIncrementSecondaryValue}
         />
@@ -44,7 +39,7 @@ const Second = () => {
         具体秒：
         <AndComponent
           label={'具体秒'}
-          options={selectOptions}
+          options={SECOND_OPTIONS}
           disabled={secondApi.isAndControlsDisabled()}
           isValueSelected={(v) => secondApi.isSelectedAndValue(v)}
           onValueChange={secondApi.selectAndValue}
@@ -59,8 +54,8 @@ const Second = () => {
         />
         <RangeComponent
           disabled={secondApi.isRangeControlsDisabled()}
-          primaryOptions={selectOptions}
-          secondaryOptions={selectOptions}
+          primaryOptions={SECOND_OPTIONS}
+          secondaryOptions={SECOND_OPTIONS}
           primaryValue={secondApi.getRangePrimaryValue()}
           secondaryValue={secondApi.getRangeSecondaryValue()}
           onPrimaryValueChange={secondApi.setRangePrimaryValue}

@@ -7,7 +7,12 @@ import {
   Type,
 } from '@sbzen/cron-core'
 import { Second } from './second'
-import { ApiProvider } from './utils/hooks/api-context/api-context.ts'
+import { Minute } from './minute'
+import { Hour } from './hour'
+import { ApiProvider } from './utils'
+import { Day } from './day'
+import { Month } from './month'
+import { Year } from './year'
 
 type QuartzProps = {
   onChange?: (value: string) => void
@@ -45,27 +50,27 @@ const Quartz = (props: QuartzProps) => {
       {
         key: Type.MINUTES,
         label: '分',
-        children: '分',
+        children: <Minute />,
       },
       {
         key: Type.HOURS,
         label: '时',
-        children: '时',
+        children: <Hour />,
       },
       {
         key: Type.DAY,
         label: '日',
-        children: '日',
+        children: <Day />,
       },
       {
         key: Type.MONTH,
         label: '月',
-        children: '月',
+        children: <Month />,
       },
       {
         key: Type.YEAR,
         label: '年',
-        children: '年',
+        children: <Year />,
       },
     ]
   }, [])
