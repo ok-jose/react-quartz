@@ -1,24 +1,29 @@
-import { useState } from 'react'
-import { Radio, Select, Checkbox } from 'antd'
+import { Radio } from 'antd'
 import { Type, Mode } from '@sbzen/cron-core'
-import { useApi } from '../utils/hooks/api-context/api-context.ts'
+import { useService } from '../utils/hooks/api-context/api-context.ts'
+import { AndComponent, Increment, RangeComponent } from '../share'
 
 const selectOptions = Array.from({ length: 60 }, (_, i) => i + 1).map((i) => {
-  return { label: i, value: i }
+  const str = i.toString()
+  return { label: str, value: str }
 })
 
 const Second = () => {
-  const secondApi = useApi(Type.SECONDS)
-  const [andSeconds, setAndSeconds] = useState<number[]>([])
+  const secondApi = useService().getApi(Type.SECONDS)
   const handleOnChange = (e: any) => {
     const value = e.target.value
     switch (value) {
       case Mode.EVERY:
-        secondApi!.selectEvery()
+        secondApi.selectEvery()
         break
       case Mode.INCREMENT:
+        secondApi.selectIncrement()
         break
       case Mode.AND:
+        secondApi.selectAnd()
+        break
+      case Mode.RANGE:
+        secondApi.selectRange()
         break
       default:
         break
@@ -29,26 +34,40 @@ const Second = () => {
       <Radio value={Mode.EVERY}>每秒</Radio>
       <Radio value={Mode.INCREMENT}>
         <div>
-          每
-          <Select key={'every'} options={selectOptions} />
-          秒，从
-          <Select key={'form'} options={selectOptions} />
-          秒开始
+          <Increment
+            primaryOptions={selectOptions}
+            primaryValue={secondApi.getIncrementPrimaryValue()}
+            onPrimaryValueChange={secondApi.setIncrementPrimaryValue}
+            secondaryOptions={selectOptions}
+            secondaryValue={secondApi.getIncrementSecondaryValue()}
+            onSecondaryValueChange={secondApi.setIncrementSecondaryValue}
+          />
         </div>
       </Radio>
       <Radio value={Mode.AND}>
         <div>
           具体秒：
-          <Checkbox.Group
-            value={andSeconds}
+          <AndComponent
+            label={'具体秒'}
             options={selectOptions}
-            onChange={(v) => {
-              setAndSeconds(v as number[])
-            }}
+            isValueSelected={(v) => secondApi.isSelectedAndValue(v)}
+            onValueChange={secondApi.selectAndValue}
+            onSelect={secondApi.selectAnd}
           />
         </div>
       </Radio>
-      <Radio value={Mode.RANGE}>D</Radio>
+      <Radio value={Mode.RANGE}>
+        <div>
+          <RangeComponent
+            primaryOptions={selectOptions}
+            primaryValue={secondApi.getRangePrimaryValue()}
+            onPrimaryValueChange={secondApi.setRangePrimaryValue}
+            secondaryOptions={selectOptions}
+            secondaryValue={secondApi.getRangeSecondaryValue()}
+            onSecondaryValueChange={secondApi.setRangeSecondaryValue}
+          />
+        </div>
+      </Radio>
     </Radio.Group>
   )
 }
