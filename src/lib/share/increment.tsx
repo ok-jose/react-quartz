@@ -23,11 +23,13 @@ const Increment = (props: IncrementProps) => {
     secondaryValue,
     onSecondaryValueChange,
     onPrimaryValueChange,
+    disabled,
   } = props
   return (
-    <div>
+    <div style={{ display: 'inline' }}>
       从
       <Select
+        disabled={disabled}
         value={secondaryValue}
         key={'secondary'}
         options={secondaryOptions}
@@ -37,6 +39,7 @@ const Increment = (props: IncrementProps) => {
       />
       开始，每
       <Select
+        disabled={disabled}
         value={primaryValue}
         key={'primary'}
         options={primaryOptions}

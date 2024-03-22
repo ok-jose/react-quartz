@@ -2,7 +2,6 @@ import { Select } from 'antd'
 import { SharedProps } from '../types.ts'
 
 type RangeProps = {
-  disabledControls?: boolean
   primaryOptions: {
     label: string
     value: string
@@ -18,6 +17,7 @@ type RangeProps = {
 } & SharedProps
 const RangeComponent = (props: RangeProps) => {
   const {
+    disabled,
     primaryOptions,
     secondaryOptions,
     primaryValue,
@@ -26,9 +26,10 @@ const RangeComponent = (props: RangeProps) => {
     onPrimaryValueChange,
   } = props
   return (
-    <div>
+    <div style={{ display: 'inline' }}>
       在
       <Select
+        disabled={disabled}
         value={primaryValue}
         key={'primary'}
         options={primaryOptions}
@@ -36,6 +37,7 @@ const RangeComponent = (props: RangeProps) => {
       />
       与
       <Select
+        disabled={disabled}
         value={secondaryValue}
         key={'secondary'}
         options={secondaryOptions}

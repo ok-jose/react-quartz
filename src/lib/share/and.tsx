@@ -10,12 +10,13 @@ type AndComponentProps = {
 } & SharedProps
 
 const AndComponent = (props: AndComponentProps) => {
-  const { options, isValueSelected, onValueChange } = props
+  const { options, isValueSelected, onValueChange, disabled } = props
   return (
     <div>
       {options.map((item) => {
         return (
           <Checkbox
+            disabled={disabled}
             key={item.value}
             checked={isValueSelected(item.value)}
             value={item.value}
