@@ -1,6 +1,6 @@
 {
   "name": "react-quartz",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Antd Quartz Cron Component - React",
   "main": "src/lib/index.ts",
   "module": "dist/lib/index.js",
@@ -19,7 +19,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && copy-package && vite build",
+    "copy-package": "cp package.json dist",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -29,7 +30,7 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "publish": "npm publish"
+    "publish": "npm publish ./dist"
   },
   "dependencies": {
     "@sbzen/cron-core": "^2.0.2"
