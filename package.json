@@ -1,6 +1,5 @@
 {
   "name": "react-quartz",
-  "private": true,
   "version": "1.0.0",
   "type": "module",
   "description": "Antd Quartz Cron Component - React",
@@ -9,6 +8,15 @@
     "type": "git",
     "url": "git+ssh://git@github.com/ok-jose/react-quartz.git"
   },
+  "keywords": [
+    "react",
+    "cron",
+    "quartz",
+    "antd",
+    "ant design",
+    "cron generator",
+    "quartz cron"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -21,7 +29,7 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "publish": "pnpm build && pnpm publish"
+    "publish": "npm publish ./dist"
   },
   "dependencies": {
     "@sbzen/cron-core": "^2.0.2"
