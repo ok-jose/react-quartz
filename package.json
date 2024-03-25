@@ -1,6 +1,6 @@
 {
   "name": "react-quartz",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Antd Quartz Cron Component - React",
   "type": "module",
   "license": "MIT",
