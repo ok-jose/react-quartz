@@ -1,6 +1,6 @@
 {
   "name": "react-quartz",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Antd Quartz Cron Component - React",
   "type": "module",
   "license": "MIT",
@@ -8,8 +8,8 @@
   "files": [
     "dist"
   ],
-  "main": "./dist/lib/index.umd.cjs",
-  "module": "./dist/lib/index.js",
+  "main": "./dist/index.umd.cjs",
+  "module": "./dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ok-jose/react-quartz.git"
@@ -26,7 +26,7 @@
   "scripts": {
     "dev": "vite",
     "copy-package": "cp package.json dist",
-    "build": "tsc && rm -rf dist && vite build && pnpm copy-package",
+    "build": "tsc && rm -rf dist && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -36,8 +36,7 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
-    "prepublish": "pnpm build",
-    "publish": "npm publish ./dist"
+    "prepublish": "pnpm build"
   },
   "dependencies": {
     "@sbzen/cron-core": "^2.0.2"
@@ -81,8 +80,8 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/lib/index.js",
-      "require": "./dist/lib/index.umd.cjs"
+      "import": "./dist/index.js",
+      "require": "./dist/index.umd.cjs"
     }
   },
   "resolutions": {

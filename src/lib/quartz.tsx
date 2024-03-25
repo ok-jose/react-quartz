@@ -13,14 +13,10 @@ import { ApiProvider } from './utils'
 import { Day } from './day'
 import { Month } from './month'
 import { Year } from './year'
-
-type QuartzProps = {
-  onChange?: (value: string) => void
-  value?: string
-}
+import { QuartzProps } from './types'
 
 const Quartz = (props: QuartzProps) => {
-  const { onChange, value } = props
+  const { onChange, value, className } = props
   const [curTab, setCurTab] = useState<Type>(Type.SECONDS)
   const service = useMemo(() => {
     return new CronQuartzUIService()
@@ -79,6 +75,7 @@ const Quartz = (props: QuartzProps) => {
   return (
     <ApiProvider value={{ service: service }}>
       <Tabs
+        className={className}
         activeKey={curTab}
         items={items}
         onChange={(tabKey) => setCurTab(tabKey as Type)}
@@ -87,3 +84,4 @@ const Quartz = (props: QuartzProps) => {
   )
 }
 export { Quartz }
+export type { QuartzProps }

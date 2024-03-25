@@ -13,3 +13,9 @@ export declare enum WeekDayCode {
   FRI = 'FRI',
   SAT = 'SAT',
 }
+
+export type QuartzProps = {
+  onChange?: (value: string) => void
+  value?: string
+  className?: string
+}
