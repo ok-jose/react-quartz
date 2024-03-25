@@ -19,8 +19,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && copy-package && vite build",
     "copy-package": "cp package.json dist",
+    "build": "tsc && pnpm copy-package && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
