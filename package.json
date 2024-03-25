@@ -2,8 +2,12 @@
   "name": "react-quartz",
   "version": "1.0.5",
   "description": "Antd Quartz Cron Component - React",
-  "main": "src/lib/index.ts",
-  "module": "dist/lib/index.js",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lib/index.umd.cjs",
+  "module": "./dist/lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ok-jose/react-quartz.git"
@@ -20,7 +24,7 @@
   "scripts": {
     "dev": "vite",
     "copy-package": "cp package.json dist",
-    "build": "tsc && pnpm copy-package && vite build",
+    "build": "tsc && vite build && pnpm copy-package",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -71,6 +75,12 @@
     "typescript": "^5.2.2",
     "prettier": "^3.2.5",
     "vite": "^5.1.6"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/lib/index.js",
+      "require": "./dist/lib/index.umd.cjs"
+    }
   },
   "resolutions": {
     "react": "^18.2.0",
