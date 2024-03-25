@@ -3,6 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
+  "description": "Antd Quartz Cron Component - React",
+  "main": "src/lib/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ok-jose/react-quartz.git"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -14,7 +20,8 @@
     "build-storybook": "storybook build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "publish": "pnpm build && pnpm publish"
   },
   "dependencies": {
     "@sbzen/cron-core": "^2.0.2"
