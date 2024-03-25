@@ -1,6 +1,6 @@
 {
   "name": "react-quartz",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "Antd Quartz Cron Component - React",
   "main": "src/lib/index.ts",
   "module": "dist/lib/index.js",
