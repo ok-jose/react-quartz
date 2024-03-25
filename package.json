@@ -1,6 +1,6 @@
 {
   "name": "react-quartz",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Antd Quartz Cron Component - React",
   "type": "module",
   "files": [
@@ -24,7 +24,7 @@
   "scripts": {
     "dev": "vite",
     "copy-package": "cp package.json dist",
-    "build": "tsc && vite build && pnpm copy-package",
+    "build": "tsc && rm -rf dist && vite build && pnpm copy-package",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
