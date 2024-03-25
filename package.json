@@ -3,6 +3,8 @@
   "version": "1.0.7",
   "description": "Antd Quartz Cron Component - React",
   "type": "module",
+  "license": "MIT",
+  "author": "Jose",
   "files": [
     "dist"
   ],
