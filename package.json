@@ -1,11 +1,32 @@
 {
   "name": "react-quartz",
-  "private": true,
-  "version": "1.0.0",
+  "version": "1.0.7",
+  "description": "Antd Quartz Cron Component - React",
   "type": "module",
+  "license": "MIT",
+  "author": "Jose",
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/lib/index.umd.cjs",
+  "module": "./dist/lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/ok-jose/react-quartz.git"
+  },
+  "keywords": [
+    "react",
+    "cron",
+    "quartz",
+    "antd",
+    "ant design",
+    "cron generator",
+    "quartz cron"
+  ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "copy-package": "cp package.json dist",
+    "build": "tsc && rm -rf dist && vite build && pnpm copy-package",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
@@ -14,7 +35,9 @@
     "build-storybook": "storybook build",
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
-    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prepublish": "pnpm build",
+    "publish": "npm publish ./dist"
   },
   "dependencies": {
     "@sbzen/cron-core": "^2.0.2"
@@ -55,6 +78,12 @@
     "typescript": "^5.2.2",
     "prettier": "^3.2.5",
     "vite": "^5.1.6"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/lib/index.js",
+      "require": "./dist/lib/index.umd.cjs"
+    }
   },
   "resolutions": {
     "react": "^18.2.0",
