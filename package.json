@@ -1,6 +1,6 @@
 {
   "name": "react-quartz",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "Antd Quartz Cron Component - React",
   "type": "module",
   "files": [
@@ -34,6 +34,7 @@
     "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}\"",
+    "prepublish": "pnpm build",
     "publish": "npm publish ./dist"
   },
   "dependencies": {
