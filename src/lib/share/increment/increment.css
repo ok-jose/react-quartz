@@ -1,0 +1,8 @@
+.increment {
+    display: inline-flex;
+    align-content: center;
+}
+
+.increment-select {
+    margin: 0 5px;
+}

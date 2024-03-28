@@ -1,0 +1,5 @@
+.and {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 22px;
+}

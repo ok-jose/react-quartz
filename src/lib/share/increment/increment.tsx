@@ -1,5 +1,7 @@
 import { Select } from 'antd'
-import { SharedProps } from '../types.ts'
+import { SharedProps } from '../../types.ts'
+import { useSize } from '../../utils'
+import './increment.css'
 
 type IncrementProps = {
   primaryOptions: {
@@ -25,10 +27,14 @@ const Increment = (props: IncrementProps) => {
     onPrimaryValueChange,
     disabled,
   } = props
+
+  const size = useSize()
   return (
-    <div style={{ display: 'inline' }}>
+    <div className={'increment'}>
       从
       <Select
+        className={'increment-select'}
+        size={size}
         disabled={disabled}
         value={secondaryValue}
         key={'secondary'}
@@ -39,6 +45,8 @@ const Increment = (props: IncrementProps) => {
       />
       开始，每
       <Select
+        className={'increment-select'}
+        size={size}
         disabled={disabled}
         value={primaryValue}
         key={'primary'}

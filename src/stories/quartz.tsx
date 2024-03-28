@@ -8,6 +8,7 @@ export const QuartZ = () => {
     <div>
       <Input value={value} />
       <Quartz
+        size="small"
         value={value}
         onChange={(changedStr) => {
           setValue(changedStr)

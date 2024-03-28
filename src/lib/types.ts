@@ -18,4 +18,5 @@ export type QuartzProps = {
   onChange?: (value: string) => void
   value?: string
   className?: string
+  size?: 'small' | 'middle' | 'large'
 }

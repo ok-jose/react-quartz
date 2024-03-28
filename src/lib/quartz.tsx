@@ -16,7 +16,7 @@ import { Year } from './year'
 import { QuartzProps } from './types'
 
 const Quartz = (props: QuartzProps) => {
-  const { onChange, value, className } = props
+  const { onChange, value, className, size } = props
   const [curTab, setCurTab] = useState<Type>(Type.SECONDS)
   const service = useMemo(() => {
     return new CronQuartzUIService()
@@ -73,7 +73,7 @@ const Quartz = (props: QuartzProps) => {
   useEffect(() => () => service.destroy(), [service])
   useEffect(() => listenChanges())
   return (
-    <ApiProvider value={{ service: service }}>
+    <ApiProvider value={{ service, size }}>
       <Tabs
         className={className}
         activeKey={curTab}

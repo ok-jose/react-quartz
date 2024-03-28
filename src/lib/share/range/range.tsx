@@ -1,5 +1,7 @@
 import { Select } from 'antd'
-import { SharedProps } from '../types.ts'
+import { SharedProps } from '../../types.ts'
+import { useSize } from '../../utils'
+import './range.css'
 
 type RangeProps = {
   primaryOptions: {
@@ -25,10 +27,13 @@ const RangeComponent = (props: RangeProps) => {
     onSecondaryValueChange,
     onPrimaryValueChange,
   } = props
+  const size = useSize()
   return (
-    <div style={{ display: 'inline' }}>
+    <div className={'range'}>
       在
       <Select
+        className={'range-select'}
+        size={size}
         disabled={disabled}
         value={primaryValue}
         key={'primary'}
@@ -37,6 +42,8 @@ const RangeComponent = (props: RangeProps) => {
       />
       与
       <Select
+        className={'range-select'}
+        size={size}
         disabled={disabled}
         value={secondaryValue}
         key={'secondary'}

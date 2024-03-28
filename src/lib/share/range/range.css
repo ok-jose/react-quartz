@@ -1,0 +1,8 @@
+.range {
+    display: inline-flex;
+    align-content: center;
+}
+
+.range-select {
+    margin: 0 5px;
+}
