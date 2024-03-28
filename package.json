@@ -10,6 +10,7 @@
   ],
   "main": "./dist/index.umd.cjs",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/ok-jose/react-quartz.git"
@@ -76,7 +77,8 @@
     "storybook": "^8.0.2",
     "typescript": "^5.2.2",
     "prettier": "^3.2.5",
-    "vite": "^5.1.6"
+    "vite": "^5.1.6",
+    "vite-plugin-dts": "^3.8.1"
   },
   "exports": {
     ".": {
