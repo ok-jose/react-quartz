@@ -4,7 +4,7 @@ import { useSize } from '../../utils'
 import './range.css'
 
 type RangeProps = {
-  unit: string
+  unit?: string
   primaryOptions: {
     label: string
     value: string

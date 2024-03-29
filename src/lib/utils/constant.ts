@@ -1,3 +1,13 @@
+export enum WeekDayCode {
+  SUN = 'SUN',
+  MON = 'MON',
+  TUE = 'TUE',
+  WED = 'WED',
+  THU = 'THU',
+  FRI = 'FRI',
+  SAT = 'SAT',
+}
+
 // 创建一个通用的函数来生成选项
 function generateOptions(length: number, start: number = 1) {
   return Array.from({ length }, (_, i) => i + start).map((i) => {
@@ -14,6 +24,37 @@ const DAY_OPTIONS = generateOptions(31)
 const WEEK_DAY_OPTIONS = generateOptions(7)
 const MONTH_INTERVAL = generateOptions(12)
 const YEAR_OPTIONS = generateOptions(80, 2020)
+
+const WEEK_OPTIONS = [
+  {
+    label: '周一',
+    value: WeekDayCode.MON,
+  },
+  {
+    label: '周二',
+    value: WeekDayCode.TUE,
+  },
+  {
+    label: '周三',
+    value: WeekDayCode.WED,
+  },
+  {
+    label: '周四',
+    value: WeekDayCode.THU,
+  },
+  {
+    label: '周五',
+    value: WeekDayCode.FRI,
+  },
+  {
+    label: '周六',
+    value: WeekDayCode.SAT,
+  },
+  {
+    label: '周日',
+    value: WeekDayCode.SUN,
+  },
+]
 
 const YEAR_UNIT = '年'
 const MONTH_UNIT = '月'
@@ -91,4 +132,5 @@ export {
   MINUTE_UNIT,
   SECOND_UNIT,
   generateOptions,
+  WEEK_OPTIONS,
 }

@@ -4,7 +4,7 @@ import { useSize } from '../../utils'
 import './increment.css'
 
 type IncrementProps = {
-  unit: string
+  unit?: string
   primaryOptions: {
     label: string | number
     value: string
