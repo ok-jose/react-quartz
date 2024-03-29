@@ -1,6 +1,6 @@
 import { Radio } from 'antd'
 import { Type, Mode } from '@sbzen/cron-core'
-import { useService, DAY_OPTIONS } from '../utils'
+import { useService, HOUR_OPTIONS, HOUR_UNIT, generateOptions } from '../utils'
 import { AndComponent, Increment, RangeComponent } from '../share'
 
 const Hour = () => {
@@ -21,11 +21,12 @@ const Hour = () => {
           onChange={hourApi.selectIncrement}
         />
         <Increment
+          unit={HOUR_UNIT}
           disabled={hourApi.isIncrementControlsDisabled()}
-          primaryOptions={DAY_OPTIONS}
+          primaryOptions={generateOptions(24)}
           primaryValue={hourApi.getIncrementPrimaryValue()}
           onPrimaryValueChange={hourApi.setIncrementPrimaryValue}
-          secondaryOptions={DAY_OPTIONS}
+          secondaryOptions={HOUR_OPTIONS}
           secondaryValue={hourApi.getIncrementSecondaryValue()}
           onSecondaryValueChange={hourApi.setIncrementSecondaryValue}
         />
@@ -39,7 +40,7 @@ const Hour = () => {
         具体小时：
         <AndComponent
           label={'具体小时'}
-          options={DAY_OPTIONS}
+          options={HOUR_OPTIONS}
           disabled={hourApi.isAndControlsDisabled()}
           isValueSelected={(v) => hourApi.isSelectedAndValue(v)}
           onValueChange={hourApi.selectAndValue}
@@ -53,9 +54,10 @@ const Hour = () => {
           onChange={hourApi.selectRange}
         />
         <RangeComponent
+          unit={HOUR_UNIT}
           disabled={hourApi.isRangeControlsDisabled()}
-          primaryOptions={DAY_OPTIONS}
-          secondaryOptions={DAY_OPTIONS}
+          primaryOptions={HOUR_OPTIONS}
+          secondaryOptions={HOUR_OPTIONS}
           primaryValue={hourApi.getRangePrimaryValue()}
           secondaryValue={hourApi.getRangeSecondaryValue()}
           onPrimaryValueChange={hourApi.setRangePrimaryValue}

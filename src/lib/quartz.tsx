@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { Tabs } from 'antd'
 import {
   CronQuartzUIService,
@@ -16,18 +16,20 @@ import { Year } from './year'
 import { QuartzProps } from './types'
 
 const Quartz = (props: QuartzProps) => {
-  const { onChange, value, className, size } = props
+  const { onChange, value = '', className, size, disabled } = props
   const [curTab, setCurTab] = useState<Type>(Type.SECONDS)
-  const service = useMemo(() => {
-    return new CronQuartzUIService()
-  }, [])
-  const applyChanges = () => {
+
+  const [service] = useState(new CronQuartzUIService())
+
+  useEffect(() => service.fillFromExpression(value), [service, value])
+  const applyChanges = useCallback(() => {
     const str = service.toString()
     if (str !== value && onChange) {
       onChange(str)
     }
-  }
-  const listenChanges = () => {
+  }, [service, value, onChange])
+
+  const listenChanges = useCallback(() => {
     const segments = getSegmentsList()
     return service.listen(segments, (_, segment) => {
       const shouldApply = getTypeSegments(curTab).includes(segment)
@@ -35,7 +37,11 @@ const Quartz = (props: QuartzProps) => {
         applyChanges()
       }
     })
-  }
+  }, [curTab, service, applyChanges])
+  useEffect(() => () => service.destroy(), [service])
+  useEffect(() => listenChanges(), [listenChanges])
+  useEffect(() => service.setDisabled(disabled), [disabled, service])
+
   const items = useMemo(() => {
     return [
       {
@@ -70,8 +76,7 @@ const Quartz = (props: QuartzProps) => {
       },
     ]
   }, [])
-  useEffect(() => () => service.destroy(), [service])
-  useEffect(() => listenChanges())
+  if (!service) return null
   return (
     <ApiProvider value={{ service, size }}>
       <Tabs

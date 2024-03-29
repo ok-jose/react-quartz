@@ -1,6 +1,6 @@
 import { Radio } from 'antd'
 import { Type, Mode } from '@sbzen/cron-core'
-import { useService, MONTH_OPTIONS, MONTH_INTERVAL } from '../utils'
+import { useService, MONTH_OPTIONS, MONTH_INTERVAL, MONTH_UNIT } from '../utils'
 import { AndComponent, Increment, RangeComponent } from '../share'
 
 const Month = () => {
@@ -21,6 +21,7 @@ const Month = () => {
           onChange={monthApi.selectIncrement}
         />
         <Increment
+          unit={MONTH_UNIT}
           disabled={monthApi.isIncrementControlsDisabled()}
           primaryOptions={MONTH_INTERVAL}
           primaryValue={monthApi.getIncrementPrimaryValue()}
@@ -53,6 +54,7 @@ const Month = () => {
           onChange={monthApi.selectRange}
         />
         <RangeComponent
+          unit={MONTH_UNIT}
           disabled={monthApi.isRangeControlsDisabled()}
           primaryOptions={MONTH_OPTIONS}
           secondaryOptions={MONTH_OPTIONS}

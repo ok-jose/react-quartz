@@ -15,6 +15,7 @@ export declare enum WeekDayCode {
 }
 
 export type QuartzProps = {
+  disabled?: boolean
   onChange?: (value: string) => void
   value?: string
   className?: string

@@ -1,6 +1,11 @@
 import { Radio } from 'antd'
-import { Type, Mode } from '@sbzen/cron-core'
-import { useService, SECOND_OPTIONS } from '../utils'
+import { Mode, Type } from '@sbzen/cron-core'
+import {
+  generateOptions,
+  SECOND_OPTIONS,
+  SECOND_UNIT,
+  useService,
+} from '../utils'
 import { AndComponent, Increment, RangeComponent } from '../share'
 
 const Second = () => {
@@ -21,8 +26,9 @@ const Second = () => {
           onChange={secondApi.selectIncrement}
         />
         <Increment
+          unit={SECOND_UNIT}
           disabled={secondApi.isIncrementControlsDisabled()}
-          primaryOptions={SECOND_OPTIONS}
+          primaryOptions={generateOptions(60)}
           primaryValue={secondApi.getIncrementPrimaryValue()}
           onPrimaryValueChange={secondApi.setIncrementPrimaryValue}
           secondaryOptions={SECOND_OPTIONS}
@@ -53,6 +59,7 @@ const Second = () => {
           onChange={secondApi.selectRange}
         />
         <RangeComponent
+          unit={SECOND_UNIT}
           disabled={secondApi.isRangeControlsDisabled()}
           primaryOptions={SECOND_OPTIONS}
           secondaryOptions={SECOND_OPTIONS}

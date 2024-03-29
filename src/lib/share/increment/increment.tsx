@@ -4,6 +4,7 @@ import { useSize } from '../../utils'
 import './increment.css'
 
 type IncrementProps = {
+  unit: string
   primaryOptions: {
     label: string | number
     value: string
@@ -26,6 +27,7 @@ const Increment = (props: IncrementProps) => {
     onSecondaryValueChange,
     onPrimaryValueChange,
     disabled,
+    unit,
   } = props
 
   const size = useSize()
@@ -43,7 +45,7 @@ const Increment = (props: IncrementProps) => {
           onSecondaryValueChange(value)
         }}
       />
-      开始，每
+      {unit}开始，每
       <Select
         className={'increment-select'}
         size={size}
@@ -53,6 +55,7 @@ const Increment = (props: IncrementProps) => {
         options={primaryOptions}
         onSelect={onPrimaryValueChange}
       />
+      {unit}执行
     </div>
   )
 }

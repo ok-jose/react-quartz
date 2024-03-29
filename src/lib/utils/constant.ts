@@ -2,17 +2,26 @@
 function generateOptions(length: number, start: number = 1) {
   return Array.from({ length }, (_, i) => i + start).map((i) => {
     const str = i.toString()
-    return { label: str, value: str }
+    return { value: str, label: str }
   })
 }
 
 // 使用新的函数来生成选项
 const SECOND_OPTIONS = generateOptions(60, 0)
 const MINUTE_OPTIONS = generateOptions(60, 0)
+const HOUR_OPTIONS = generateOptions(24, 0)
 const DAY_OPTIONS = generateOptions(31)
 const WEEK_DAY_OPTIONS = generateOptions(7)
 const MONTH_INTERVAL = generateOptions(12)
 const YEAR_OPTIONS = generateOptions(80, 2020)
+
+const YEAR_UNIT = '年'
+const MONTH_UNIT = '月'
+const DAY_UNIT = '日'
+const WEEK_UNIT = '周'
+const HOUR_UNIT = '时'
+const MINUTE_UNIT = '分'
+const SECOND_UNIT = '秒'
 
 const MONTH_OPTIONS = [
   {
@@ -68,9 +77,18 @@ const MONTH_OPTIONS = [
 export {
   SECOND_OPTIONS,
   MINUTE_OPTIONS,
+  HOUR_OPTIONS,
   DAY_OPTIONS,
   WEEK_DAY_OPTIONS,
   MONTH_OPTIONS,
   YEAR_OPTIONS,
   MONTH_INTERVAL,
+  YEAR_UNIT,
+  MONTH_UNIT,
+  WEEK_UNIT,
+  DAY_UNIT,
+  HOUR_UNIT,
+  MINUTE_UNIT,
+  SECOND_UNIT,
+  generateOptions,
 }

@@ -1,6 +1,6 @@
 import { Radio } from 'antd'
 import { Type, Mode } from '@sbzen/cron-core'
-import { useService, DAY_OPTIONS } from '../utils'
+import { useService, DAY_OPTIONS, DAY_UNIT } from '../utils'
 import { AndComponent, Increment } from '../share'
 
 const Day = () => {
@@ -21,6 +21,7 @@ const Day = () => {
           onChange={DayApi.selectDayOfMonthIncrement}
         />
         <Increment
+          unit={DAY_UNIT}
           disabled={DayApi.isDayOfMonthIncrementControlsDisabled()}
           primaryOptions={DAY_OPTIONS}
           primaryValue={DayApi.getDayOfMonthIncrementPrimary()}

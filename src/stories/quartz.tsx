@@ -3,7 +3,8 @@ import { Input } from 'antd'
 import { Quartz } from '../lib'
 
 export const QuartZ = () => {
-  const [value, setValue] = useState<string>('* * * * * *')
+  const [value = '* * * 1/28 * ?', setValue] =
+    useState<string>('* * * 1/28 * ?')
   return (
     <div>
       <Input value={value} />

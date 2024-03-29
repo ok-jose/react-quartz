@@ -1,6 +1,6 @@
 import { Radio } from 'antd'
 import { Type, Mode } from '@sbzen/cron-core'
-import { useService, YEAR_OPTIONS } from '../utils'
+import { useService, YEAR_OPTIONS, YEAR_UNIT } from '../utils'
 import { AndComponent, Increment, RangeComponent } from '../share'
 
 const Year = () => {
@@ -21,6 +21,7 @@ const Year = () => {
           onChange={yearApi.selectIncrement}
         />
         <Increment
+          unit={YEAR_UNIT}
           disabled={yearApi.isIncrementControlsDisabled()}
           primaryOptions={YEAR_OPTIONS}
           primaryValue={yearApi.getIncrementPrimaryValue()}
@@ -53,6 +54,7 @@ const Year = () => {
           onChange={yearApi.selectRange}
         />
         <RangeComponent
+          unit={YEAR_UNIT}
           disabled={yearApi.isRangeControlsDisabled()}
           primaryOptions={YEAR_OPTIONS}
           secondaryOptions={YEAR_OPTIONS}

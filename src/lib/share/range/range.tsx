@@ -4,6 +4,7 @@ import { useSize } from '../../utils'
 import './range.css'
 
 type RangeProps = {
+  unit: string
   primaryOptions: {
     label: string
     value: string
@@ -19,6 +20,7 @@ type RangeProps = {
 } & SharedProps
 const RangeComponent = (props: RangeProps) => {
   const {
+    unit,
     disabled,
     primaryOptions,
     secondaryOptions,
@@ -40,6 +42,7 @@ const RangeComponent = (props: RangeProps) => {
         options={primaryOptions}
         onSelect={onPrimaryValueChange}
       />
+      {unit}
       与
       <Select
         className={'range-select'}
@@ -52,6 +55,7 @@ const RangeComponent = (props: RangeProps) => {
           onSecondaryValueChange(value)
         }}
       />
+      {unit}
       之间
     </div>
   )
